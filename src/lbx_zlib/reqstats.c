@@ -27,7 +27,7 @@ other dealings in this Software without prior written authorization
 from The Open Group.
 
 */
-/* $XFree86$ */
+/* $XFree86: xc/lib/lbxutil/lbx_zlib/reqstats.c,v 1.6 2001/12/14 19:57:01 dawes Exp $ */
 
 #include "reqstats.h"
 

@@ -1,5 +1,5 @@
 /*
- * $NCDId: @(#)lbxdelta.c,v 1.2 1994/01/22 02:23:40 dct Exp $
+ * $NCDXorg: @(#)lbxdelta.c,v 1.2 1994/01/22 02:23:40 dct Exp $
  * $Xorg: lbxdelta.c,v 1.5 2000/08/17 19:46:40 cpqbld Exp $
  * Copyright 1993 Network Computing Devices
  *
@@ -22,6 +22,7 @@
  *
  * Author:  Dale Tonogai, Network Computing Devices
  */
+/* $XFree86: xc/lib/lbxutil/delta/lbxdelta.c,v 1.8 2001/08/27 19:01:07 dawes Exp $ */
 
 #include "X.h"
 #include "Xproto.h"
@@ -30,9 +31,7 @@
 #include "lbxstr.h"
 #include "lbxdeltastr.h"
 
-#ifndef NULL
-#define NULL	0
-#endif
+#include <stddef.h>
 
 #ifdef LBXREQSTATS
 #include "../lbx_zlib/reqstats.h"
@@ -47,10 +46,9 @@ extern struct ReqStats LbxRequestStats[LbxNumberReqs];
  * Allocate data structures needed for doing Delta compaction
  */
 int
-LBXInitDeltaCache(pcache, nDeltas, maxDeltasize)
-    LBXDeltasPtr	pcache;
-    int			nDeltas;
-    int			maxDeltasize;
+LBXInitDeltaCache(LBXDeltasPtr	pcache,
+		  int		nDeltas,
+		  int		maxDeltasize)
 {
     int			i;
     unsigned char	*mem;
@@ -81,20 +79,18 @@ LBXInitDeltaCache(pcache, nDeltas, maxDeltasize)
  * Free data structures used for doing Delta compaction
  */
 void
-LBXFreeDeltaCache(pcache)
-    LBXDeltasPtr pcache;
+LBXFreeDeltaCache(LBXDeltasPtr pcache)
 {
     if (pcache->nDeltas && pcache->deltas)
 	xfree(pcache->deltas);
 }
 
 static int 
-BytesDiff(ptr1, ptr2, n, maxn)
-    register char *ptr1, *ptr2;
-    register int  n;
-    register int  maxn;
+BytesDiff(unsigned char *ptr1, unsigned char *ptr2,
+	  int  n,
+	  int  maxn)
 {
-    register int  result = 0;
+    int  result = 0;
 
     while (n--)
 	if (*(ptr1++) != *(ptr2++))
@@ -109,14 +105,13 @@ BytesDiff(ptr1, ptr2, n, maxn)
  * messages have greater than maxdiff differences, return -1.
  */
 int
-LBXDeltaMinDiffs(pcache, inmsg, inmsglen, maxdiff, pindex)
-    LBXDeltasPtr	pcache;
-    unsigned char	*inmsg;
-    int			inmsglen;
-    int			maxdiff;
-    int			*pindex;
+LBXDeltaMinDiffs(LBXDeltasPtr	pcache,
+		 unsigned char	*inmsg,
+		 int		inmsglen,
+		 int		maxdiff,
+		 int		*pindex)
 {
-    int			i, j, k, l = maxdiff + 1;
+    int			i, j, k = 0, l = maxdiff + 1;
     int		   	m;
     LBXDeltaElemPtr	dm;
 
@@ -148,14 +143,14 @@ LBXDeltaMinDiffs(pcache, inmsg, inmsglen, maxdiff, pindex)
 /*
  * Delta compact a given message
  */
-LBXEncodeDelta(pcache, inmsg, ndiff, index, buf)
-    LBXDeltasPtr	pcache;
-    unsigned char	*inmsg;
-    int			ndiff;
-    int			index;
-    unsigned char	*buf;
+void
+LBXEncodeDelta(LBXDeltasPtr	pcache,
+	       unsigned char	*inmsg,
+	       int		ndiff,
+	       int		index,
+	       unsigned char	*buf)
 {
-    register int	i, off, diff;
+    int			i, off, diff;
     xLbxDiffItem	*deltas = (xLbxDiffItem *)buf;
 
     for (off = i = 0; i < ndiff; off++) {
@@ -170,12 +165,11 @@ LBXEncodeDelta(pcache, inmsg, ndiff, index, buf)
  * Uncompact a message
  */
 int
-LBXDecodeDelta(pcache, deltas, ndiff, index, buf)
-    LBXDeltasPtr	pcache;
-    xLbxDiffItem	*deltas;
-    int			ndiff;
-    int			index;
-    unsigned char	**buf;
+LBXDecodeDelta(LBXDeltasPtr	pcache,
+	       xLbxDiffItem	*deltas,
+	       int		ndiff,
+	       int		index,
+	       unsigned char	**buf)
 {
     int			i;
     int			newindex = pcache->nextDelta;
@@ -223,10 +217,9 @@ LBXDecodeDelta(pcache, deltas, ndiff, index, buf)
  * Add a message to the outgoing delta cache
  */
 void
-LBXAddDeltaOut(pcache, inmsg, inmsglen)
-    LBXDeltasPtr	pcache;
-    unsigned char	*inmsg;
-    int			inmsglen;
+LBXAddDeltaOut(LBXDeltasPtr	pcache,
+	       unsigned char	*inmsg,
+	       int		inmsglen)
 {
     memcpy(pcache->deltas[pcache->nextDelta].buf, inmsg, inmsglen);
     pcache->deltas[pcache->nextDelta].length = inmsglen;
@@ -239,10 +232,9 @@ LBXAddDeltaOut(pcache, inmsg, inmsglen)
  * Add a message to the incoming delta cache
  */
 void
-LBXAddDeltaIn(pcache, inmsg, inmsglen)
-    LBXDeltasPtr	pcache;
-    unsigned char	*inmsg;
-    int			inmsglen;
+LBXAddDeltaIn(LBXDeltasPtr	pcache,
+	      unsigned char	*inmsg,
+	      int		inmsglen)
 {
     memcpy(pcache->deltas[pcache->nextDelta].buf, inmsg, inmsglen);
     pcache->deltas[pcache->nextDelta].length = inmsglen;

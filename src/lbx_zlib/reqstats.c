@@ -27,6 +27,9 @@ other dealings in this Software without prior written authorization
 from The Open Group.
 
 */
+/* $XFree86: xc/lib/lbxutil/lbx_zlib/reqstats.c,v 1.6 2001/12/14 19:57:01 dawes Exp $ */
+
+#include "reqstats.h"
 
 #ifdef LBXREQSTATS
 
@@ -35,7 +38,6 @@ from The Open Group.
 #define _XLBX_SERVER_
 #include "XLbx.h"
 #include "lbx_zlib.h"
-#include "reqstats.h"
 #include <signal.h>
 #include <stdio.h>
 
@@ -53,7 +55,7 @@ int unknown_extension_bytes = 0;
 struct ReqStats CoreRequestStats[128];
 struct ReqStats LbxRequestStats[LbxNumberReqs];
 
-void LbxPrintReqStats ();
+static void LbxPrintReqStats (int);
 
 char *X_ReqNames[128] = {
     0,				    /*  0  */
@@ -231,7 +233,8 @@ char *LBX_ReqNames[LbxNumberReqs] = {
 
 
 
-InitLbxReqStats ()
+void
+InitLbxReqStats (void)
 
 {
     bzero (CoreRequestStats, 128 * sizeof (struct ReqStats));
@@ -241,11 +244,10 @@ InitLbxReqStats ()
 }
 
 
-PrintStatsTable (table, count, reqNames)
-
-struct ReqStats *table;
-int count;
-char **reqNames;
+static void
+PrintStatsTable (struct ReqStats *table,
+		 int count,
+		 char **reqNames)
 
 {
     int i;
@@ -289,12 +291,10 @@ char **reqNames;
     }
 }
 
-
-PrintDeltaStats (table, count, reqNames)
-
-struct ReqStats *table;
-int count;
-char **reqNames;
+static void
+PrintDeltaStats (struct ReqStats *table,
+		 int count,
+		 char **reqNames)
 
 {
     int i;
@@ -311,10 +311,8 @@ char **reqNames;
 }
 
 
-void
-LbxPrintReqStats (dummy)
-
-int dummy;
+static void
+LbxPrintReqStats (int dummy)
 
 {
     unsigned long total;
@@ -367,9 +365,8 @@ int dummy;
 }
 
 
-do_decompress_with_stats (priv)
-
-struct compress_private *priv;
+void
+do_decompress_with_stats (struct compress_private *priv)
 
 {
     int incount = priv->cp_inputbufend - priv->cp_inputbuf;
@@ -497,12 +494,10 @@ struct compress_private *priv;
     priv->cp_outputbuf = priv->stream.next_out;
 }
 
-#else /* LBXREQSTATS */
+#else
 
-_LbxEmptyFunction ()
-
-{
-    ;
-}
+void
+InitLbxReqStats()
+{}
 
 #endif /* LBXREQSTATS */

@@ -22,8 +22,11 @@
  * LIABILITY, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE 
  * OF THIS SOFTWARE.
  */
+/* $XFree86: xc/lib/lbxutil/image/efaxg42d.c,v 1.5 2001/04/23 20:31:05 dawes Exp $ */
 
+#include <X11/Xos.h>
 #include <X11/Xfuncproto.h>
+#include <stdlib.h>
 #include "lbxfax.h"
 #include "lbximage.h"
 #include "lbxbwcodes.h"
@@ -66,9 +69,7 @@ typedef struct {
  */
 
 static int
-flushbits (outbuf)
-
-Buffer *outbuf;
+flushbits (Buffer *outbuf)
 
 {
     if (outbuf->bytesLeft > 0)
@@ -92,11 +93,9 @@ Buffer *outbuf;
  */
 
 static int
-putbits (bits, length, outbuf)
-
-unsigned int bits;
-unsigned int length;
-Buffer *outbuf;
+putbits (unsigned int bits,
+	 unsigned int length,
+	 Buffer *outbuf)
 
 {
     static int mask[9] =
@@ -128,10 +127,8 @@ Buffer *outbuf;
  */
 
 static int
-putcode (te, outbuf)
-
-tableentry *te;
-Buffer *outbuf;
+putcode (tableentry *te,
+	 Buffer *outbuf)
 
 {
     return (putbits (te->code, te->length, outbuf));
@@ -145,12 +142,10 @@ Buffer *outbuf;
  */
 
 static int
-putspan (span, tab, outbuf)
-
-int span;
-tableentry *tab;
-Buffer *outbuf;
-
+putspan (int span,
+	 tableentry *tab,
+	 Buffer *outbuf)
+	 
 {
     while (span >= 2624)
     {
@@ -179,12 +174,10 @@ Buffer *outbuf;
 #define	PIXEL(buf,ix)	((((buf)[(ix)>>3]) >> (7-((ix)&7))) & 1)
 
 static int
-EncodeFaxG42D (inbuf, refline, bits, outbuf)
-
-unsigned char *inbuf;
-unsigned char *refline;
-int bits;
-Buffer *outbuf;
+EncodeFaxG42D (unsigned char *inbuf,
+	       unsigned char *refline,
+	       int bits,
+	       Buffer *outbuf)
 
 {
     short white = 1;
@@ -257,17 +250,14 @@ Buffer *outbuf;
 
 
 int
-LbxImageEncodeFaxG42D (inbuf, outbuf, outbufSize, image_bytes, pixels_per_line,
-		       padded_bytes_per_scanline, reverse_bits, bytesCompressed)
-
-unsigned char *inbuf;
-unsigned char *outbuf;
-int outbufSize;
-int image_bytes;
-int pixels_per_line;
-int padded_bytes_per_scanline;
-int reverse_bits;
-int *bytesCompressed;
+LbxImageEncodeFaxG42D (unsigned char *inbuf,
+		       unsigned char *outbuf,
+		       int outbufSize,
+		       int image_bytes,
+		       int pixels_per_line,
+		       int padded_bytes_per_scanline,
+		       int reverse_bits,
+		       int *bytesCompressed)
 
 {
     int bytes_per_scanline = ROUNDUP8 (pixels_per_line);

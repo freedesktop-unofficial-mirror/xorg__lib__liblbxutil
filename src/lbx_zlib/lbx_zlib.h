@@ -50,8 +50,10 @@ from The Open Group.
  * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  * 
  */
+/* $XFree86: xc/lib/lbxutil/lbx_zlib/lbx_zlib.h,v 1.10 2001/12/14 19:57:00 dawes Exp $ */
 
 #include "zlib.h"
+#include "Xfuncproto.h"
 
 struct compress_private {
     z_stream	stream;
@@ -94,7 +96,11 @@ struct iovec {
 };
 
 #else
+#ifndef Lynx
 #include <sys/uio.h>
+#else
+#include <uio.h>
+#endif
 #endif
 
 #ifdef WIN32
@@ -107,3 +113,13 @@ struct iovec {
 #undef BOOL
 #define EWOULDBLOCK WSAEWOULDBLOCK
 #endif
+
+
+/* lbx_zlib_io.c */
+extern int GetInputPtr ( int fd, ZlibBufferPtr inbuf, int reqlen, 
+			 unsigned char **ppkt );
+extern int StuffInput ( ZlibBufferPtr inbuf, unsigned char *pkt, int reqlen );
+extern void FreeInput ( ZlibBufferPtr inbuf, int len );
+extern void CommitOutBuf ( ZlibBufferPtr outbuf, int outlen );
+extern int FlushOutBuf ( int fd, ZlibBufferPtr outbuf );
+extern int FlushIovBuf ( int fd, struct iovec *iovbuf );

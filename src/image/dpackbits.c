@@ -22,7 +22,9 @@
  * LIABILITY, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE 
  * OF THIS SOFTWARE.
  */
+/* $XFree86: xc/lib/lbxutil/image/dpackbits.c,v 1.4 2001/01/17 19:43:35 dawes Exp $ */
 
+#include <X11/Xos.h>
 #include <X11/Xfuncproto.h>
 #include "lbximage.h"
 
@@ -33,11 +35,9 @@
  */
 
 static void
-DecodePackBits (inbuf, numPixels, outbuf)
-
-char **inbuf;
-int numPixels;
-char *outbuf;
+DecodePackBits (char **inbuf,
+		int numPixels,
+		char *outbuf)
 
 {
     register char *inptr = *inbuf;
@@ -79,12 +79,10 @@ char *outbuf;
 
 
 int
-LbxImageDecodePackBits (inbuf, outbuf, num_scan_lines, scan_line_size)
-
-char *inbuf;
-char *outbuf;
-int num_scan_lines;
-int scan_line_size;
+LbxImageDecodePackBits (char *inbuf,
+			char *outbuf,
+			int num_scan_lines,
+			int scan_line_size)
 
 {
     char *outbuf_start = outbuf;

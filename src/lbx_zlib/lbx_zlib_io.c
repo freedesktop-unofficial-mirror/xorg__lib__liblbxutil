@@ -22,6 +22,7 @@
  *
  * Author:  Dale Tonogai, Network Computing Devices
  */
+/* $XFree86: xc/lib/lbxutil/lbx_zlib/lbx_zlib_io.c,v 1.12 2001/07/25 15:04:57 dawes Exp $ */
 
 #ifdef WIN32
 #define _WILLWINSOCK_
@@ -29,25 +30,21 @@
 #include <X11/Xos.h>
 #include <X11/Xfuncs.h>
 #include <errno.h>
-#ifdef X_NOT_STDC_ENV
-extern int errno;
-#endif
-#ifndef WIN32
+#if !defined(WIN32) && !defined(Lynx)
 #include <sys/param.h>
 #endif
 #include "lbxbufstr.h"
 #include "lbx_zlib.h"
+#include "os.h"
 
-#ifndef NULL
-#define NULL		0
-#endif
+#include <stddef.h>
 
 
 /*
  * The following is taken from the xtrans code, almost as is,
  * it would be nice to share it...
  */
-#if defined(WIN32) || defined(__sxg__) || defined(SCO)
+#if defined(WIN32) || defined(__sxg__) || (defined(SCO) && !defined(SVR4) && !defined(SCO325))
 static int
 writev(int fildes, const struct iovec *iov, int iovcnt)
 {
@@ -107,7 +104,7 @@ GetInputPtr(fd, inbuf, reqlen, ppkt)
     int		 fd;
     ZlibBufferPtr inbuf;
     int		 reqlen;
-    char	 **ppkt;
+    unsigned char **ppkt;
 {
     int		 readbytes;
     int		 gotbytes;
@@ -116,7 +113,7 @@ GetInputPtr(fd, inbuf, reqlen, ppkt)
 	inbuf->bufptr = inbuf->bufbase;
 
     if (reqlen <= inbuf->bufcnt) {
-	*ppkt = inbuf->bufptr;
+	*ppkt = (unsigned char *)inbuf->bufptr;
 	return 1;
     }
 
@@ -128,7 +125,7 @@ GetInputPtr(fd, inbuf, reqlen, ppkt)
     gotbytes = read(fd, inbuf->bufptr + inbuf->bufcnt, readbytes);
     if (gotbytes > 0) {
 	if (reqlen <= (inbuf->bufcnt += gotbytes)) {
-	    *ppkt = inbuf->bufptr;
+	    *ppkt = (unsigned char *)inbuf->bufptr;
 	    return 1;
 	}
     }
@@ -148,7 +145,7 @@ GetInputPtr(fd, inbuf, reqlen, ppkt)
 int
 StuffInput(inbuf, pkt, reqlen)
     ZlibBufferPtr inbuf;
-    char	 *pkt;
+    unsigned char *pkt;
     int		 reqlen;
 {
     int		 readbytes;

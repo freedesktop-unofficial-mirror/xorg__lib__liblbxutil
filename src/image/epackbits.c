@@ -44,12 +44,10 @@
     
 
 static int
-EncodePackBits (inbuf, numPixels, outbuf, bytesLeft)
-
-char *inbuf;
-int numPixels;
-char **outbuf;
-int *bytesLeft;
+EncodePackBits (char *inbuf,
+		int numPixels,
+		char **outbuf,
+		int *bytesLeft)
 
 {
     register int pixelsLeft = numPixels;
@@ -175,17 +173,14 @@ int *bytesLeft;
 
 
 int
-LbxImageEncodePackBits (inbuf, outbuf, outbufSize, format, depth,
-    num_scan_lines, scan_line_size, bytesCompressed)
-
-char *inbuf;
-char *outbuf;
-int outbufSize;
-int format;
-int depth;
-int num_scan_lines;
-int scan_line_size;
-int *bytesCompressed;
+LbxImageEncodePackBits (char *inbuf,
+			char *outbuf,
+			int outbufSize,
+			int format,
+			int depth,
+			int num_scan_lines,
+			int scan_line_size,
+			int *bytesCompressed)
 
 {
     char *outbuf_start = outbuf;

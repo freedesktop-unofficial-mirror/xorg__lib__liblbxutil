@@ -22,6 +22,7 @@
  * LIABILITY, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE 
  * OF THIS SOFTWARE.
  */
+/* $XFree86: xc/lib/lbxutil/image/lbxfax.h,v 1.5 2001/03/05 01:05:12 tsi Exp $ */
 
 /*
  * This header file contains various constants and tables needed
@@ -45,5 +46,15 @@ typedef struct tableentry {
 
 #define ROUNDUP8(x) ((x + 7) >> 3)
 
+#ifdef __DARWIN__
+#ifndef TIFFaxWhiteCodes
+#define TIFFFaxWhiteCodes Darwin_X_TIFFFaxWhiteCodes
+#define TIFFFaxBlackCodes Darwin_X_TIFFFaxBlackCodes
+#endif
+#endif
 extern tableentry TIFFFaxWhiteCodes[];
 extern tableentry TIFFFaxBlackCodes[];
+
+/* misc.c */
+extern int LbxImageFindDiff ( unsigned char *cp, int bs, int be, int color );
+extern void LbxReverseBits ( unsigned char *cp, int n );

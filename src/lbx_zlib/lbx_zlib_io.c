@@ -33,9 +33,9 @@
 #if !defined(WIN32) && !defined(Lynx)
 #include <sys/param.h>
 #endif
-#include "lbxbufstr.h"
+#include <X11/extensions/lbxbufstr.h>
 #include "lbx_zlib.h"
-#include "os.h"
+#include <X11/os.h>
 
 #include <stddef.h>
 

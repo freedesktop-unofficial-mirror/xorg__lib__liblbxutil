@@ -24,12 +24,12 @@
  */
 /* $XFree86: xc/lib/lbxutil/delta/lbxdelta.c,v 1.7 2001/07/25 15:04:57 dawes Exp $ */
 
-#include "X.h"
-#include "Xproto.h"
-#include "os.h"
+#include <X11/X.h>
+#include <X11/Xproto.h>
+#include <X11/os.h>
 #define _XLBX_SERVER_
-#include "lbxstr.h"
-#include "lbxdeltastr.h"
+#include <X11/extensions/lbxstr.h>
+#include <X11/extensions/lbxdeltastr.h>
 
 #include <stddef.h>
 

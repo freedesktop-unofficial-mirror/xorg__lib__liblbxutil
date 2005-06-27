@@ -63,10 +63,10 @@ from The Open Group.
 #if !defined(WIN32) && !defined(Lynx)
 #include <sys/param.h>
 #endif
-#include "lbxbufstr.h"
+#include <X11/extensions/lbxbufstr.h>
 #include "lbx_zlib.h"
-#include "os.h"
-#include "lbxzlib.h"
+#include <X11/os.h>
+#include <X11/extensions/lbxzlib.h>
 
 unsigned long stream_out_compressed;
 unsigned long stream_out_uncompressed;

@@ -53,7 +53,7 @@ from The Open Group.
 /* $XFree86: xc/lib/lbxutil/lbx_zlib/lbx_zlib.h,v 1.9 2001/08/27 19:01:07 dawes Exp $ */
 
 #include "zlib.h"
-#include "Xfuncproto.h"
+#include <X11/Xfuncproto.h>
 
 struct compress_private {
     z_stream	stream;

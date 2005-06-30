@@ -1,3 +1,10 @@
+2005-06-30  Alexander Gottwald  <ago at freedesktop dot org>
+
+	* src/Makefile.am: 
+	Fix call of mkg3states    
+	remove -no-undefined since liblbxutil has external references to Xfree
+	and Xalloc
+
 2005-05-17    <ssp@aware-of-vacuity.boston.redhat.com>
 
 	* configure.ac: Remove rest of half-removed if statement

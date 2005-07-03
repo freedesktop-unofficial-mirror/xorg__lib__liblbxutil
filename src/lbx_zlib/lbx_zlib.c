@@ -65,7 +65,6 @@ from The Open Group.
 #endif
 #include <X11/extensions/lbxbufstr.h>
 #include "lbx_zlib.h"
-#include <X11/os.h>
 #include <X11/extensions/lbxzlib.h>
 
 unsigned long stream_out_compressed;

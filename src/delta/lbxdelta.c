@@ -26,7 +26,6 @@
 
 #include <X11/X.h>
 #include <X11/Xproto.h>
-#include <X11/os.h>
 #define _XLBX_SERVER_
 #include <X11/extensions/lbxstr.h>
 #include <X11/extensions/lbxdeltastr.h>

@@ -35,7 +35,6 @@
 #endif
 #include <X11/extensions/lbxbufstr.h>
 #include "lbx_zlib.h"
-#include <X11/os.h>
 
 #include <stddef.h>
 

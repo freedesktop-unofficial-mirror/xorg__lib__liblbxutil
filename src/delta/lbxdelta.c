@@ -55,7 +55,7 @@ LBXInitDeltaCache(LBXDeltasPtr	pcache,
     if ((pcache->nDeltas = nDeltas)) {
 	pcache->maxDeltasize = maxDeltasize;
 	if ((pcache->deltas = (LBXDeltaElemPtr)
-	    xalloc(pcache->nDeltas * sizeof(LBXDeltaElemRec) +
+	    Xalloc(pcache->nDeltas * sizeof(LBXDeltaElemRec) +
 		pcache->nDeltas * pcache->maxDeltasize)) == NULL) {
 	    return -1;
 	}
@@ -81,7 +81,7 @@ void
 LBXFreeDeltaCache(LBXDeltasPtr pcache)
 {
     if (pcache->nDeltas && pcache->deltas)
-	xfree(pcache->deltas);
+	Xfree(pcache->deltas);
 }
 
 static int 

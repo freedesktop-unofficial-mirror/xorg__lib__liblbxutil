@@ -55,6 +55,7 @@ from The Open Group.
 #ifdef WIN32
 #define _WILLWINSOCK_
 #endif
+#define _BSD_SOURCE
 #include <X11/Xos.h>
 #include <X11/Xfuncs.h>
 #include <stdio.h>

@@ -1,3 +1,9 @@
+2005-07-13  Alan Coopersmith  <alan.coopersmith@sun.com>
+
+	* src/Makefile.am: 
+	Use "-c" flag to mkg3states to add "const" tags to data tables.
+	(Moves ~135k from unshared/rw data section to shared/ro text section)
+
 2005-07-08  Keith Packard  <keithp@keithp.com>
 
 	* .cvsignore:

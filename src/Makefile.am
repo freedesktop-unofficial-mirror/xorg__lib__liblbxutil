@@ -29,7 +29,7 @@ liblbxutil_la_LIBADD = @DEP_LIBS@
 INCLUDES = @DEP_CFLAGS@ 
 
 g3states.h: mkg3states
-	./mkg3states > g3states.h_ && mv g3states.h_ g3states.h
+	./mkg3states -c > g3states.h_ && mv g3states.h_ g3states.h
 
 #
 # Library version info.  Check the libtool docs for

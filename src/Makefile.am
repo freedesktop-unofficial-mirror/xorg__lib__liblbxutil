@@ -31,16 +31,6 @@ INCLUDES = @DEP_CFLAGS@
 g3states.h: mkg3states
 	./mkg3states -c > g3states.h_ && mv g3states.h_ g3states.h
 
-#
-# Library version info.  Check the libtool docs for
-# instructions on when and how to change this value
-#
-# bump when the ABI changes
-LBXUTIL_CURRENT=2
-# bump for non-ABI changes, reset to zero when CURRENT changes
-LBXUTIL_REVISION=0
-# bump when the ABI changes in backward-compatible fashion
-LBXUTIL_AGE=2
-liblbxutil_la_LDFLAGS = -version-info ${LBXUTIL_CURRENT}:${LBXUTIL_REVISION}:${LBXUTIL_AGE}
+liblbxutil_la_LDFLAGS = -version-number 1:0:0
 
 CLEANFILES = g3states.h

@@ -1,6 +1,8 @@
 /*
  * $NCDXorg: @(#)lbxdelta.c,v 1.2 1994/01/22 02:23:40 dct Exp $
  * $Xorg: lbxdelta.c,v 1.5 2000/08/17 19:46:40 cpqbld Exp $
+ * $XdotOrg: $
+ *
  * Copyright 1993 Network Computing Devices
  *
  * Permission to use, copy, modify, distribute, and sell this software and its
@@ -31,6 +33,7 @@
 #include <X11/extensions/lbxdeltastr.h>
 
 #include <stddef.h>
+#include <string.h>
 
 #ifdef LBXREQSTATS
 #include "../lbx_zlib/reqstats.h"

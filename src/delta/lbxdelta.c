@@ -44,6 +44,17 @@ extern struct ReqStats LbxRequestStats[LbxNumberReqs];
 #define LBX_CODE 136 /* XXX - this should not be hardcoded - on todo list */
 #endif
 
+/* Copied from xc/programs/Xserver/include/xorg/os.h */
+#ifndef _HAVE_XALLOC_DECLS
+#define _HAVE_XALLOC_DECLS
+#include <X11/Xdefs.h>
+
+extern pointer Xalloc(unsigned long /*amount*/);
+extern pointer Xcalloc(unsigned long /*amount*/);
+extern pointer Xrealloc(pointer /*ptr*/, unsigned long /*amount*/);
+extern void Xfree(pointer /*ptr*/);
+#endif
+
 /*
  * Allocate data structures needed for doing Delta compaction
  */

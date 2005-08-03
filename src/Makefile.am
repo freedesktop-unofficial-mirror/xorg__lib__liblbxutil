@@ -24,9 +24,9 @@ liblbxutil_la_SOURCES =				\
 	$(srcdir)/image/lbxbwcodes.h		\
 	$(srcdir)/delta/lbxdelta.c
 
-liblbxutil_la_LIBADD = @DEP_LIBS@
+liblbxutil_la_LIBADD = @LBXUTIL_LIBS@
 
-INCLUDES = @DEP_CFLAGS@ 
+INCLUDES = @LBXUTIL_CFLAGS@ 
 
 g3states.h: mkg3states
 	./mkg3states -c > g3states.h_ && mv g3states.h_ g3states.h

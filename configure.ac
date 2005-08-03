@@ -45,13 +45,13 @@ AC_PROG_CC
 AC_PROG_LIBTOOL
 
 # Check for X
-PKG_CHECK_MODULES(DEP, xextproto)
+PKG_CHECK_MODULES(LBXUTIL, xextproto)
 
-AC_CHECK_LIB(z,deflate,[DEP_LIBS="${DEP_LIBS} -lz"],
+AC_CHECK_LIB(z,deflate,[LBXUTIL_LIBS="${LBXUTIL_LIBS} -lz"],
 	AC_MSG_ERROR([zlib is required to build liblbxutil]))
 
-AC_SUBST(DEP_CFLAGS)
-AC_SUBST(DEP_LIBS)
+AC_SUBST(LBXUTIL_CFLAGS)
+AC_SUBST(LBXUTIL_LIBS)
 		  
 # Check fixesext configuration, strip extra digits from package version to
 # find the required protocol version

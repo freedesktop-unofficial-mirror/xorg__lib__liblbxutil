@@ -6,5 +6,5 @@ includedir=@includedir@
 Name: lbxutil
 Description: LBX Utilities
 Version: @PACKAGE_VERSION@
-Cflags: -I${includedir} @DEP_CFLAGS@
-Libs: -L${libdir} -llbxutil @DEP_LIBS@
+Cflags: -I${includedir} @LBXUTIL_CFLAGS@
+Libs: -L${libdir} -llbxutil @LBXUTIL_LIBS@

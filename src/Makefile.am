@@ -5,9 +5,6 @@ noinst_PROGRAMS = mkg3states
 mkg3states_SOURCES =				\
 	$(srcdir)/image/mkg3states.c
 
-BUILT_SOURCES =					\
-	g3states.h
-
 liblbxutil_la_SOURCES =				\
 	$(srcdir)/lbx_zlib/reqstats.h		\
 	$(srcdir)/lbx_zlib/lbx_zlib_io.c	\
@@ -18,15 +15,18 @@ liblbxutil_la_SOURCES =				\
 	$(srcdir)/image/dpackbits.c		\
 	$(srcdir)/image/epackbits.c		\
 	$(srcdir)/image/dfaxg42d.c		\
-	g3states.h				\
 	$(srcdir)/image/lbxfax.h		\
 	$(srcdir)/image/efaxg42d.c		\
 	$(srcdir)/image/lbxbwcodes.h		\
 	$(srcdir)/delta/lbxdelta.c
 
+nodist_liblbxutil_la_SOURCES = g3states.h
+
 liblbxutil_la_LIBADD = @LBXUTIL_LIBS@
 
 INCLUDES = @LBXUTIL_CFLAGS@ 
+
+$(srcdir)/image/dfaxg42d.c: g3states.h
 
 g3states.h: mkg3states
 	./mkg3states -c > g3states.h_ && mv g3states.h_ g3states.h

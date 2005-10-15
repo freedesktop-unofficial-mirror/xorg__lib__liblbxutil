@@ -1,3 +1,8 @@
+2005-10-15  Kevin E. Martin  <kem-at-freedesktop-dot-org>
+
+	* src/Makefile.am: Generate g3states.h as needed instead of using
+	BUILT_SOURCES in order to pass check-tarball test.
+
 2005-07-13  Alan Coopersmith  <alan.coopersmith@sun.com>
 
 	* src/Makefile.am: 

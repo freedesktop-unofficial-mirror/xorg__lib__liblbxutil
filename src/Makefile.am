@@ -29,6 +29,7 @@ INCLUDES = @LBXUTIL_CFLAGS@
 $(srcdir)/image/dfaxg42d.c: g3states.h
 
 g3states.h: mkg3states
+	-rm -f g3states.h
 	./mkg3states -c > g3states.h_ && mv g3states.h_ g3states.h
 
 liblbxutil_la_LDFLAGS = -version-number 1:0:0

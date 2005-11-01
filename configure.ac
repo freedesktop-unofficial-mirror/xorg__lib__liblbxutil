@@ -45,7 +45,7 @@ AC_PROG_CC
 AC_PROG_LIBTOOL
 
 # Check for X
-PKG_CHECK_MODULES(LBXUTIL, xextproto)
+PKG_CHECK_MODULES(LBXUTIL, xextproto xproto)
 
 AC_CHECK_LIB(z,deflate,[LBXUTIL_LIBS="${LBXUTIL_LIBS} -lz"],
 	AC_MSG_ERROR([zlib is required to build liblbxutil]))

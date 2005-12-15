@@ -34,7 +34,7 @@ dnl protocol, so Xfixes version l.n.m corresponds to protocol version l.n,
 dnl that 'revision' number appears in Xfixes.h and has to be manually
 dnl synchronized.
 dnl
-AC_INIT(lbxutil, 0.99.3, [https://bugs.freedesktop.org/enter_bug.cgi?product=xorg], liblbxutil)
+AC_INIT(lbxutil, 1.0.0, [https://bugs.freedesktop.org/enter_bug.cgi?product=xorg], liblbxutil)
 AM_INIT_AUTOMAKE([dist-bzip2])
 AM_MAINTAINER_MODE
 

@@ -34,8 +34,8 @@
  *     during state generation (see mkg3states.c).
  */
 
-#ifdef __DARWIN__
-#ifndef TIFFaxWhiteCodes
+#ifdef __APPLE__
+#ifndef TIFFFaxWhiteCodes
 #define TIFFFaxWhiteCodes Darwin_X_TIFFFaxWhiteCodes
 #endif
 #endif
@@ -151,8 +151,8 @@ tableentry TIFFFaxWhiteCodes[] = {
     { 12, 0x0, G3CODE_INVALID },	/* 0000 0000 0000 */
 };
 
-#ifdef __DARWIN__
-#ifndef TIFFaxBlackCodes
+#ifdef __APPLE__
+#ifndef TIFFFaxBlackCodes
 #define TIFFFaxBlackCodes Darwin_X_TIFFFaxBlackCodes
 #endif
 #endif

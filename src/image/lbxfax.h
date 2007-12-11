@@ -46,8 +46,8 @@ typedef struct tableentry {
 
 #define ROUNDUP8(x) ((x + 7) >> 3)
 
-#ifdef __DARWIN__
-#ifndef TIFFaxWhiteCodes
+#ifdef __APPLE__
+#ifndef TIFFFaxWhiteCodes
 #define TIFFFaxWhiteCodes Darwin_X_TIFFFaxWhiteCodes
 #define TIFFFaxBlackCodes Darwin_X_TIFFFaxBlackCodes
 #endif

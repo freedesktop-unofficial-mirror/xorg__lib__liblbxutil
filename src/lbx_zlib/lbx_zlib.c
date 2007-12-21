@@ -68,12 +68,12 @@ from The Open Group.
 #include "lbx_zlib.h"
 #include <X11/extensions/lbxzlib.h>
 
-unsigned long stream_out_compressed;
-unsigned long stream_out_uncompressed;
-unsigned long stream_out_plain;
-unsigned long stream_in_compressed;
-unsigned long stream_in_uncompressed;
-unsigned long stream_in_plain;
+unsigned long stream_out_compressed = 0;
+unsigned long stream_out_uncompressed = 0;
+unsigned long stream_out_plain = 0;
+unsigned long stream_in_compressed = 0;
+unsigned long stream_in_uncompressed = 0;
+unsigned long stream_in_plain=0;
 #ifdef LBXREQSTATS
 unsigned long stream_in_packet_header_bytes = 0;
 extern int LbxWhoAmI;

@@ -1,3 +1,5 @@
+.deps
+.libs
 aclocal.m4
 autom4te.cache
 config.guess
@@ -19,3 +21,11 @@ missing
 mkinstalldirs
 stamp-h1
 *~
+*.o
+*.la
+*.lo
+liblbxutil-*.tar.*
+ChangeLog
+tags
+g3states.h
+mkg3states

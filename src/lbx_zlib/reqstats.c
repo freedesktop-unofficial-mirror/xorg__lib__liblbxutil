@@ -497,7 +497,7 @@ do_decompress_with_stats (struct compress_private *priv)
 #else
 
 void
-InitLbxReqStats()
+InitLbxReqStats(void)
 {}
 
 #endif /* LBXREQSTATS */

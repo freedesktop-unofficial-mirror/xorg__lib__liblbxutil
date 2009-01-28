@@ -25,6 +25,7 @@
 
 #include <X11/Xfuncproto.h>
 #include <X11/extensions/lbximage.h>
+#include <stdio.h>	/* NULL */
 
 /*
  * -------------------------------------------------------------------------
@@ -57,7 +58,7 @@ EncodePackBits (char *inbuf,
     enum { BASE, LITERAL, RUN, LITERAL_RUN } state;
 
     state = BASE;
-    lastliteral = 0;
+    lastliteral = NULL;
 
     while (pixelsLeft > 0)
     {

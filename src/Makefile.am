@@ -1,5 +1,7 @@
 lib_LTLIBRARIES = liblbxutil.la
 
+AM_CFLAGS = @LBXUTIL_CFLAGS@ 
+
 noinst_PROGRAMS = mkg3states
 
 mkg3states_SOURCES =				\
@@ -23,8 +25,6 @@ liblbxutil_la_SOURCES =				\
 nodist_liblbxutil_la_SOURCES = g3states.h
 
 liblbxutil_la_LIBADD = @LBXUTIL_LIBS@
-
-INCLUDES = @LBXUTIL_CFLAGS@ 
 
 $(srcdir)/image/dfaxg42d.c: g3states.h
 

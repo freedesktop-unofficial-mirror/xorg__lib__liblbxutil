@@ -168,11 +168,11 @@ typedef	unsigned char NullModeTable[MAX_NULLPREFIX][256];
 typedef	unsigned char HorizModeTable[MAX_HORIZPREFIX][256];
 
   /* the bit string corresponding to this row of the decoding table */
-long	null_mode_prefix[MAX_NULLPREFIX];
-NullModeTable null_mode;		/* MODE_*, indexed by bit and byte */
-NullModeTable null_mode_next_state;	/* next row of decoding tables to use */
+static long null_mode_prefix[MAX_NULLPREFIX];
+static NullModeTable null_mode;		/* MODE_*, indexed by bit and byte */
+static NullModeTable null_mode_next_state;	/* next row of decoding tables to use */
   /* number of prefixes or rows in the G4 decoding tables */
-short	null_mode_prefix_count = 0;
+static short null_mode_prefix_count = 0;
 
 void write_null_mode_table ( FILE *fd, NullModeTable table, char *name );
 void write_horiz_mode_table ( FILE *fd, HorizModeTable table, char *name );
@@ -204,10 +204,10 @@ void write_horiz_mode_table ( FILE *fd, HorizModeTable table, char *name );
 /* invalid code encountered */
 #define	UNCOMP_INVALID	14
 
-long	uncomp_mode_prefix[MAX_NULLPREFIX];
-NullModeTable uncomp_mode;
-NullModeTable uncomp_mode_next_state;
-short	uncomp_mode_prefix_count = 0;
+static long uncomp_mode_prefix[MAX_NULLPREFIX];
+static NullModeTable uncomp_mode;
+static NullModeTable uncomp_mode_next_state;
+static short uncomp_mode_prefix_count = 0;
 
 /*
  * Decoding action values for horiz_mode.
@@ -219,7 +219,7 @@ short	uncomp_mode_prefix_count = 0;
 #define	ACT_BRUNT	106		/* terminating black run code */
 #define	ACT_BRUN	169		/* non-terminating black run code */
 #define ACT_EOL		210		/* end-of-line code */
-HorizModeTable horiz_mode;
+static HorizModeTable horiz_mode;
 
 short horiz_mode_code_black (short runlen)
 {
@@ -237,19 +237,19 @@ short horiz_mode_code_white (short runlen)
  * otherwise, it is the bit number with which to continue
  * decoding the next codeword.
  */
-HorizModeTable horiz_mode_next_state;
+static HorizModeTable horiz_mode_next_state;
 		/* prefixes corresponding to the rows of the decoding table */
-long	horiz_mode_prefix[MAX_HORIZPREFIX];
+static long horiz_mode_prefix[MAX_HORIZPREFIX];
 		/* color of next run, BLACK or WHITE */
-char	horiz_mode_color[MAX_HORIZPREFIX];
-short	horiz_mode_prefix_count = 0;
+static char horiz_mode_color[MAX_HORIZPREFIX];
+static short horiz_mode_prefix_count = 0;
 
 static	unsigned char bit_mask[8] =
     { 0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01 };
 
 
-int	verbose = FALSE;
-char	*storage_class = "";
+static int verbose = FALSE;
+static char *storage_class = "";
 
 int
 main (int argc, char *argv[])
@@ -283,10 +283,7 @@ main (int argc, char *argv[])
     exit(0);
 }
 
-void write_null_mode_table (fd, table, name)
-FILE *fd;
-NullModeTable table;
-char *name;
+void write_null_mode_table (FILE *fd, NullModeTable table, char *name)
 {
     int i, j;
     char* outersep;

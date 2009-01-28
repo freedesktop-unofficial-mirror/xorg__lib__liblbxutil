@@ -70,9 +70,7 @@ writev(int fildes, const struct iovec *iov, int iovcnt)
 #endif
 
 int
-InitZlibBuffer(b, size)
-    ZlibBufferPtr b;
-    int size;
+InitZlibBuffer(ZlibBufferPtr b, int size)
 {
     if ((b->bufbase = (char *)Xalloc(size)) == NULL)
 	return -1;
@@ -83,8 +81,7 @@ InitZlibBuffer(b, size)
 }
 
 void
-FreeZlibBuffer(b)
-    ZlibBufferPtr b;
+FreeZlibBuffer(ZlibBufferPtr b)
 {
     if (b->bufbase) {
 	Xfree(b->bufbase);
@@ -99,11 +96,7 @@ FreeZlibBuffer(b)
  *     -1 if error
  */
 int
-GetInputPtr(fd, inbuf, reqlen, ppkt)
-    int		 fd;
-    ZlibBufferPtr inbuf;
-    int		 reqlen;
-    unsigned char **ppkt;
+GetInputPtr(int fd, ZlibBufferPtr inbuf, int reqlen, unsigned char **ppkt)
 {
     int		 readbytes;
     int		 gotbytes;
@@ -142,10 +135,7 @@ GetInputPtr(fd, inbuf, reqlen, ppkt)
  */
 
 int
-StuffInput(inbuf, pkt, reqlen)
-    ZlibBufferPtr inbuf;
-    unsigned char *pkt;
-    int		 reqlen;
+StuffInput(ZlibBufferPtr inbuf, unsigned char *pkt, int reqlen)
 {
     int		 readbytes;
     char	 *last;
@@ -164,9 +154,7 @@ StuffInput(inbuf, pkt, reqlen)
 }
 
 void
-FreeInput(inbuf, len)
-    ZlibBufferPtr inbuf;
-    int		 len;
+FreeInput(ZlibBufferPtr inbuf, int len)
 {
     inbuf->bufptr += len;
     if ((inbuf->bufcnt -= len) == 0)
@@ -177,9 +165,7 @@ FreeInput(inbuf, len)
  * Reserve outlen bytes in the output buffer.
  */
 char *
-ReserveOutBuf(outbuf, outlen)
-    ZlibBufferPtr outbuf;
-    int		 outlen;
+ReserveOutBuf(ZlibBufferPtr outbuf, int outlen)
 {
     int		 left;
 
@@ -194,9 +180,7 @@ ReserveOutBuf(outbuf, outlen)
  * Commit previously reserved space as real output
  */
 void
-CommitOutBuf(outbuf, outlen)
-    ZlibBufferPtr outbuf;
-    int		 outlen;
+CommitOutBuf(ZlibBufferPtr outbuf, int outlen)
 {
     outbuf->bufcnt += outlen;
 }
@@ -207,9 +191,7 @@ CommitOutBuf(outbuf, outlen)
  *	    <  0 - write error
  */
 int
-FlushOutBuf(fd, outbuf)
-    int		 fd;
-    ZlibBufferPtr outbuf;
+FlushOutBuf(int fd, ZlibBufferPtr outbuf)
 {
     int		 bytes;
 
@@ -236,9 +218,7 @@ FlushOutBuf(fd, outbuf)
  *	    <  0 - write error
  */
 int
-FlushIovBuf(fd, iovbuf)
-    int		 fd;
-    struct iovec *iovbuf;
+FlushIovBuf(int fd, struct iovec *iovbuf)
 {
     int		 bytes;
     int		 niov = 2;

@@ -1,8 +1,0 @@
-.deps
-g3states.h
-liblbxutil.la
-.libs
-*.lo
-Makefile
-Makefile.in
-mkg3states

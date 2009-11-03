@@ -1,6 +1,6 @@
 lib_LTLIBRARIES = liblbxutil.la
 
-AM_CFLAGS = @LBXUTIL_CFLAGS@ 
+AM_CFLAGS = $(CWARNFLAGS) $(LBXUTIL_CFLAGS)
 
 noinst_PROGRAMS = mkg3states
 
@@ -24,13 +24,13 @@ liblbxutil_la_SOURCES =				\
 
 nodist_liblbxutil_la_SOURCES = g3states.h
 
-liblbxutil_la_LIBADD = @LBXUTIL_LIBS@
+liblbxutil_la_LIBADD = $(LBXUTIL_LIBS)
 
 $(srcdir)/image/dfaxg42d.c: g3states.h
 
 g3states.h: mkg3states
 	-rm -f g3states.h
-	./mkg3states -c > g3states.h_ && mv g3states.h_ g3states.h
+	$(AM_V_GEN) ./mkg3states -c > g3states.h_ && mv g3states.h_ g3states.h
 
 liblbxutil_la_LDFLAGS = -version-number 1:0:0 -no-undefined
 

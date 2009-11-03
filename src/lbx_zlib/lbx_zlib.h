@@ -134,3 +134,11 @@ extern pointer Xcalloc(unsigned long /*amount*/);
 extern pointer Xrealloc(pointer /*ptr*/, unsigned long /*amount*/);
 extern void Xfree(pointer /*ptr*/);
 #endif
+
+/* lbx_zlib.c */
+unsigned long stream_out_compressed;
+unsigned long stream_out_uncompressed;
+unsigned long stream_out_plain;
+unsigned long stream_in_compressed;
+unsigned long stream_in_uncompressed;
+unsigned long stream_in_plain;

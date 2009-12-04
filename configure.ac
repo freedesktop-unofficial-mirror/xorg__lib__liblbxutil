@@ -40,7 +40,7 @@ AC_PROG_LIBTOOL
 XORG_DEFAULT_OPTIONS
 
 # Check for X
-PKG_CHECK_MODULES(LBXUTIL, xextproto xproto)
+PKG_CHECK_MODULES(LBXUTIL, [xextproto >= 7.0.99.1] xproto)
 
 AC_CHECK_LIB(z,deflate,[LBXUTIL_LIBS="${LBXUTIL_LIBS} -lz"],
 	AC_MSG_ERROR([zlib is required to build liblbxutil]))

@@ -29,7 +29,7 @@
 #include <X11/X.h>
 #include <X11/Xproto.h>
 #define _XLBX_SERVER_
-#include <X11/extensions/lbxstr.h>
+#include <X11/extensions/lbxproto.h>
 #include <X11/extensions/lbxdeltastr.h>
 
 #include <stddef.h>

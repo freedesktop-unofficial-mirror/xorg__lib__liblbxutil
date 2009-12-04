@@ -1,6 +1,7 @@
 lib_LTLIBRARIES = liblbxutil.la
 
 AM_CFLAGS = $(CWARNFLAGS) $(LBXUTIL_CFLAGS)
+INCLUDES = -I$(top_srcdir)/include
 
 noinst_PROGRAMS = mkg3states
 
@@ -21,6 +22,15 @@ liblbxutil_la_SOURCES =				\
 	$(srcdir)/image/efaxg42d.c		\
 	$(srcdir)/image/lbxbwcodes.h		\
 	$(srcdir)/delta/lbxdelta.c
+
+extensiondir=${includedir}/X11/extensions
+extension_HEADERS =						\
+	$(top_srcdir)/include/X11/extensions/lbxbuf.h		\
+	$(top_srcdir)/include/X11/extensions/lbxbufstr.h	\
+	$(top_srcdir)/include/X11/extensions/lbxdeltastr.h	\
+	$(top_srcdir)/include/X11/extensions/lbximage.h		\
+	$(top_srcdir)/include/X11/extensions/lbxopts.h		\
+	$(top_srcdir)/include/X11/extensions/lbxzlib.h
 
 nodist_liblbxutil_la_SOURCES = g3states.h
 

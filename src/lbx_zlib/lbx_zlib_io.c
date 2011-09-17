@@ -17,7 +17,7 @@
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT SHALL NCD.
  * BE LIABLE FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
  * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION
- * OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN 
+ * OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
  * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  *
  * Author:  Dale Tonogai, Network Computing Devices
@@ -139,7 +139,7 @@ StuffInput(ZlibBufferPtr inbuf, unsigned char *pkt, int reqlen)
 {
     int		 readbytes;
     char	 *last;
-    
+
     last = inbuf->bufptr + inbuf->bufcnt;
     if (reqlen > inbuf->bufend - last)
     {
@@ -235,10 +235,10 @@ FlushIovBuf(int fd, struct iovec *iovbuf)
 	for (i = 0; i < niov; i++) {
 	    len = MIN(bytes, iov[i].iov_len);
 	    iov[i].iov_len -= len;
-	/* 
-	 * An explicit cast is necessary because silly SGI changed 
-	 * iov_base from a caddr_t to a void* in IRIX 6.x, and strictly 
-	 * speaking ANSI/ISO C doesn't allow the use of a cast in an 
+	/*
+	 * An explicit cast is necessary because silly SGI changed
+	 * iov_base from a caddr_t to a void* in IRIX 6.x, and strictly
+	 * speaking ANSI/ISO C doesn't allow the use of a cast in an
 	 * lvalue, i.e. such as: '((char*)(iov[i].iov_base)) += len;'
 	 */
 	    iov[i].iov_base = ((char*)(iov[i].iov_base)) + len;

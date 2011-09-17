@@ -36,9 +36,9 @@ from The Open Group.
  * that the above copyright notice appear in all copies and that both that
  * copyright notice and this permission notice appear in supporting
  * documentation, and that the name Network Computing Devices, Inc. not be
- * used in advertising or publicity pertaining to distribution of this 
+ * used in advertising or publicity pertaining to distribution of this
  * software without specific, written prior permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED `AS-IS'.  NETWORK COMPUTING DEVICES, INC.,
  * DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING WITHOUT
  * LIMITATION ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
@@ -48,7 +48,7 @@ from The Open Group.
  * OR PROFITS, EVEN IF ADVISED OF THE POSSIBILITY THEREOF, AND REGARDLESS OF
  * WHETHER IN AN ACTION IN CONTRACT, TORT OR NEGLIGENCE, ARISING OUT OF OR IN
  * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
- * 
+ *
  */
 /* $XFree86: xc/lib/lbxutil/lbx_zlib/lbx_zlib.c,v 1.9 2001/08/27 19:01:07 dawes Exp $ */
 
@@ -389,7 +389,7 @@ ZlibWriteV(int		   fd,
 {
     int	i;
     int	total = 0;
-    int	this_time;	    
+    int	this_time;
 
     for (i = 0; i < iovcnt; i++)
     {

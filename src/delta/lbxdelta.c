@@ -19,7 +19,7 @@
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT SHALL NCD.
  * BE LIABLE FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
  * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION
- * OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN 
+ * OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
  * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  *
  * Author:  Dale Tonogai, Network Computing Devices
@@ -98,7 +98,7 @@ LBXFreeDeltaCache(LBXDeltasPtr pcache)
 	Xfree(pcache->deltas);
 }
 
-static int 
+static int
 BytesDiff(unsigned char *ptr1, unsigned char *ptr2,
 	  int  n,
 	  int  maxn)
@@ -113,7 +113,7 @@ BytesDiff(unsigned char *ptr1, unsigned char *ptr2,
 }
 
 /*
- * Find the message in the outgoing delta cache with the least number of 
+ * Find the message in the outgoing delta cache with the least number of
  * differing bytes and return the number of differences.  If all
  * messages have greater than maxdiff differences, return -1.
  */

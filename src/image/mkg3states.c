@@ -3,23 +3,23 @@
  * Copyright (c) 1991, 1992 Sam Leffler
  * Copyright (c) 1991, 1992 Silicon Graphics, Inc.
  *
- * Permission to use, copy, modify, distribute, and sell this software and 
+ * Permission to use, copy, modify, distribute, and sell this software and
  * its documentation for any purpose is hereby granted without fee, provided
  * that (i) the above copyright notices and this permission notice appear in
  * all copies of the software and related documentation, and (ii) the names of
  * Sam Leffler and Silicon Graphics may not be used in any advertising or
  * publicity relating to the software without the specific, prior written
  * permission of Sam Leffler and Silicon Graphics.
- * 
- * THE SOFTWARE IS PROVIDED "AS-IS" AND WITHOUT WARRANTY OF ANY KIND, 
- * EXPRESS, IMPLIED OR OTHERWISE, INCLUDING WITHOUT LIMITATION, ANY 
- * WARRANTY OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.  
- * 
+ *
+ * THE SOFTWARE IS PROVIDED "AS-IS" AND WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS, IMPLIED OR OTHERWISE, INCLUDING WITHOUT LIMITATION, ANY
+ * WARRANTY OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+ *
  * IN NO EVENT SHALL SAM LEFFLER OR SILICON GRAPHICS BE LIABLE FOR
  * ANY SPECIAL, INCIDENTAL, INDIRECT OR CONSEQUENTIAL DAMAGES OF ANY KIND,
  * OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,
- * WHETHER OR NOT ADVISED OF THE POSSIBILITY OF DAMAGE, AND ON ANY THEORY OF 
- * LIABILITY, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE 
+ * WHETHER OR NOT ADVISED OF THE POSSIBILITY OF DAMAGE, AND ON ANY THEORY OF
+ * LIABILITY, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE
  * OF THIS SOFTWARE.
  */
 /* $XFree86: xc/lib/lbxutil/image/mkg3states.c,v 1.3 1999/02/01 11:55:49 dawes Exp $ */
@@ -309,7 +309,7 @@ void write_null_mode_table (FILE *fd, NullModeTable table, char *name)
     fprintf(fd, "\n};\n");
 }
 
-void 
+void
 write_horiz_mode_table (FILE *fd, HorizModeTable table, char *name)
 {
     int i, j;
@@ -417,7 +417,7 @@ write_tables(FILE *fd)
     write_horiz_mode_table(fd, horiz_mode_next_state, "TIFFFax1DNextState");
 }
 
-short 
+short
 find_null_mode_prefix (long prefix)
 {
     short j1;
@@ -438,7 +438,7 @@ find_null_mode_prefix (long prefix)
     return (null_mode_prefix_count-1);
 }
 
-short 
+short
 find_horiz_mode_prefix (long prefix, int color)
 {
     short j1;
@@ -463,7 +463,7 @@ find_horiz_mode_prefix (long prefix, int color)
     return (horiz_mode_prefix_count - 1);
 }
 
-short 
+short
 find_uncomp_mode_prefix (long prefix)
 {
     short j1;
@@ -484,7 +484,7 @@ find_uncomp_mode_prefix (long prefix)
     return (uncomp_mode_prefix_count-1);
 }
 
-short 
+short
 null_mode_type (long prefix)
 {
     switch (prefix) {
@@ -511,7 +511,7 @@ null_mode_type (long prefix)
     return (-1);
 }
 
-short 
+short
 uncomp_mode_type (long prefix)
 {
     short code;

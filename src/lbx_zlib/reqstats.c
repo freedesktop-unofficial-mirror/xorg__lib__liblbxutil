@@ -259,7 +259,7 @@ PrintStatsTable (struct ReqStats *table,
     fprintf (stderr, "\n");
     fprintf (stderr, "%-25s\tCount\tU\tC\t%%C\t\t%%T\n", "Request");
     fprintf (stderr, "-------------------------------------------------------------------------------\n");
- 
+
     for (i = 0; i < count; i++)
     {
 	float compRatio, percentTot;
@@ -323,7 +323,7 @@ LbxPrintReqStats (int dummy)
     fprintf (stderr, "\n\n");
     fprintf (stderr, "Core X requests\n\n");
     PrintStatsTable (CoreRequestStats, 128, X_ReqNames);
- 
+
     fprintf (stderr, "\n\n");
     fprintf (stderr, "LBX requests\n\n");
     PrintStatsTable (LbxRequestStats, LbxNumberReqs, LBX_ReqNames);
@@ -342,7 +342,7 @@ LbxPrintReqStats (int dummy)
 
     fprintf (stderr, "\n\n\n");
 
-    fprintf (stderr, "overall stream compression = %f %%\n", 
+    fprintf (stderr, "overall stream compression = %f %%\n",
 	(check_sum_in_plain == 0) ? 0.0 :
             (100.0 * (1.0 - ((float) check_sum_in_compressed /
 	    (float) check_sum_in_plain))));

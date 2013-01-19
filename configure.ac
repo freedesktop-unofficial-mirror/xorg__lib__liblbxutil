@@ -21,13 +21,19 @@ dnl  PERFORMANCE OF THIS SOFTWARE.
 dnl
 dnl Process this file with autoconf to create configure.
 
+# Initialize Autoconf
 AC_PREREQ([2.60])
+AC_INIT(lbxutil, 1.1.0,
+        [https://bugs.freedesktop.org/enter_bug.cgi?product=xorg], liblbxutil)
+AC_CONFIG_SRCDIR([Makefile.am])
+AC_CONFIG_HEADERS([config.h])
 
-AC_INIT(lbxutil, 1.1.0, [https://bugs.freedesktop.org/enter_bug.cgi?product=xorg], liblbxutil)
+# Initialize Automake
 AM_INIT_AUTOMAKE([dist-bzip2])
 AM_MAINTAINER_MODE
 
-AM_CONFIG_HEADER(config.h)
+# Initialize libtool
+AC_PROG_LIBTOOL
 
 # Require xorg-macros 1.3 or later: XORG_DEFAULT_OPTIONS
 m4_ifndef([XORG_MACROS_VERSION],
@@ -36,7 +42,6 @@ XORG_MACROS_VERSION(1.3)
 
 # Check for progs
 AC_PROG_CC
-AC_PROG_LIBTOOL
 XORG_DEFAULT_OPTIONS
 
 # Check for X

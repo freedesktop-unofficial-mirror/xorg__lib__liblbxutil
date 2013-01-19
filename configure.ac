@@ -47,9 +47,6 @@ PKG_CHECK_MODULES(LBXUTIL, [xextproto >= 7.0.99.1] xproto)
 AC_CHECK_LIB(z,deflate,[LBXUTIL_LIBS="${LBXUTIL_LIBS} -lz"],
 	AC_MSG_ERROR([zlib is required to build liblbxutil]))
 
-AC_SUBST(LBXUTIL_CFLAGS)
-AC_SUBST(LBXUTIL_LIBS)
-
 AC_OUTPUT([Makefile
 	   src/Makefile
 	   lbxutil.pc])

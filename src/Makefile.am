@@ -1,7 +1,7 @@
 lib_LTLIBRARIES = liblbxutil.la
 
 AM_CFLAGS = $(CWARNFLAGS) $(LBXUTIL_CFLAGS)
-INCLUDES = -I$(top_srcdir)/include
+AM_CPPFLAGS = -I$(top_srcdir)/include
 
 noinst_PROGRAMS = mkg3states
 
